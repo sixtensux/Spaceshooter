@@ -1,13 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class OnpressFunctions : MonoBehaviour {
 
+	public float resetDelay = 2;
+
 	public void ResetGame()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		StartCoroutine(ResetScene());
+	}
+
+	//resets the game after {resetDelay} 
+	private IEnumerator ResetScene()
+	{
+		yield return new WaitForSeconds(resetDelay);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public void QuitGame()

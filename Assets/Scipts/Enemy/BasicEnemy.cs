@@ -5,6 +5,7 @@ public class BasicEnemy : Ship
 	private GameObject gameController;
 	public ScoreUpdater score;
 	public int points = 10;
+	public float speed = 10;
 	public float despawnTime = 5f;
 	public bool StartCheckOver = false;
 
@@ -13,7 +14,7 @@ public class BasicEnemy : Ship
 
 	private bool isDespawning = false;// a bool to determinate if the player should earn points when the game object is destroyed
 
-	private void Start()
+	protected virtual void Start()
 	{
 		gameController = GameObject.FindWithTag("GameController");
 		score = gameController.GetComponent<ScoreUpdater>();
@@ -22,7 +23,7 @@ public class BasicEnemy : Ship
 	public virtual void FixedUpdate()
 	{
 		
-		base.rb.transform.Translate(new Vector2((-1 * base.speed), 0));
+		base.rb.transform.Translate(new Vector2((-1 * speed), 0));
 
 		time += Time.deltaTime;
 

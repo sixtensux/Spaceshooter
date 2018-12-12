@@ -13,7 +13,6 @@ public class ShotingEnemy : BasicEnemy
 	private GameObject newProjectile;
 
 
-
 	void Update()
 	{
 		if (Time.time > nextFire)

@@ -1,30 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Shooting : MonoBehaviour 
 {
-    public GameObject projectile;
-    public float FireDelay = 0.5F;
+	//projectile and timer
+	[Range(0, 1)] //public for easy access and adjustments
+    protected float fireDelay;
+	protected GameObject projectile;
 
+    private float counter = 0.0F;
     private float nextFire = 0.5F;
 
+	//audio
+	private new AudioManager audio;
     private GameObject newProjectile;
-    private float myTime = 0.0F;
 
-    void Update()
-    {
-        myTime = myTime + Time.deltaTime;
+	private void Awake()
+	{
+		audio = FindObjectOfType<AudioManager>();
+	}
 
-        if (Input.GetButton("Fire1") && myTime > nextFire)
+	void Update()
+	{
+        counter = counter + Time.deltaTime;
+
+		//triggers the function once every "fireDelay" while holding "Fire1"(Left mouse button || Left-Ctrl)
+		if (Input.GetButton("Fire1") && counter > fireDelay) 
         {
-            nextFire = myTime + FireDelay;
+            nextFire = counter + fireDelay; 
             newProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
-
-            // create code here that animates the newProjectile
-
-            nextFire = nextFire - myTime;
-            myTime = 0.0F;
+		    audio.Play("Pew");
+			nextFire = nextFire - counter;
+            counter = 0.0F;
         }
     }
 }

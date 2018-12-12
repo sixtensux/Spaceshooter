@@ -1,20 +1,20 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Ship : MonoBehaviour
 {
 	public int health;
-	public float speed;
-
+	
 	public Rigidbody2D rb;
-	public Color blinkColor = new Color(255, 0, 0, 255);
 	public GameObject deathEffect;//particleeffect on Death
 
 	private float blinkTime;
 	private float particleLifetime;
-	private bool isDead = false;
+	private	 Color blinkColor = new Color(255, 0, 0, 255);
 
 	public SpriteRenderer sprite;
-	private Color initialColor ;
+	private Color initialColor;
 
 	
 	void Awake()
@@ -36,12 +36,12 @@ public class Ship : MonoBehaviour
 		blinkColor.a = 1;
 	}
 
-	public void StartBlink(float blinkTime)
+	private void StartBlink(float blinkTime)
 	{
 		this.blinkTime = Time.time + blinkTime;
 	}
 
-	void Update()
+	protected virtual void Update()
 	{
 		sprite = GetComponent<SpriteRenderer>();
 
@@ -60,7 +60,6 @@ public class Ship : MonoBehaviour
 	public virtual void TakeDamage(int Damage)
 	{
 		StartBlink(0.5f);
-		Debug.Log("spaghetti");
 		health -= Damage;
 
 		if (health <= 0)

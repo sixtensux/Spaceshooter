@@ -6,7 +6,7 @@ public class ScoreUpdater : MonoBehaviour
 	public int score = 0; //the score displayed in the background of the game
 	private string scoreString; //score stored as a string
 
-	public GameObject textMeshText; // the GameObject the game object of the textmest text
+	public GameObject textMeshText; // the GameObject the game object of the textmesh text
 	public TextMeshProUGUI textMesh;// the text component
 
 	private void Start()
