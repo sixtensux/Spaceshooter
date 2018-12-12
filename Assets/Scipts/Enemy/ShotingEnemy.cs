@@ -12,9 +12,9 @@ public class ShotingEnemy : BasicEnemy
 
 	private GameObject newProjectile;
 
-
-	void Update()
+	protected override void Update()
 	{
+		base.Update();
 		if (Time.time > nextFire)
 		{
 			nextFire = Time.time + FireDelay;

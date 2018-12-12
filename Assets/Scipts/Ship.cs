@@ -43,8 +43,6 @@ public class Ship : MonoBehaviour
 
 	protected virtual void Update()
 	{
-		sprite = GetComponent<SpriteRenderer>();
-
 		if (Time.time < blinkTime)
 		{
 			sprite.color = blinkColor;
@@ -68,7 +66,6 @@ public class Ship : MonoBehaviour
 		}
 	}
 
-	
 	public virtual void Die()
 	{
 		//spawns hiteffect at current position

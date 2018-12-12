@@ -4,8 +4,8 @@ public class Shooting : MonoBehaviour
 {
 	//projectile and timer
 	[Range(0, 1)] //public for easy access and adjustments
-    protected float fireDelay;
-	protected GameObject projectile;
+    public float fireDelay;
+	public GameObject projectile;
 
     private float counter = 0.0F;
     private float nextFire = 0.5F;

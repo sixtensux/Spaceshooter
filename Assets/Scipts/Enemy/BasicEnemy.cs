@@ -20,7 +20,7 @@ public class BasicEnemy : Ship
 		score = gameController.GetComponent<ScoreUpdater>();
 	}
 	
-	public virtual void FixedUpdate()
+	protected virtual void FixedUpdate()
 	{
 		
 		base.rb.transform.Translate(new Vector2((-1 * speed), 0));
