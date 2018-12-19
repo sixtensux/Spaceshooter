@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
 
 	//audio
 	private new AudioManager audio;
+
     private GameObject newProjectile;
 
 	private void Awake()
@@ -27,7 +28,7 @@ public class Shooting : MonoBehaviour
 		if (Input.GetButton("Fire1") && counter > fireDelay) 
         {
             nextFire = counter + fireDelay; 
-            newProjectile = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+            newProjectile = Instantiate(projectile, transform.position, transform.rotation);
 		    audio.Play("Pew");
 			nextFire = nextFire - counter;
             counter = 0.0F;

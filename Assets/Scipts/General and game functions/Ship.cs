@@ -15,10 +15,13 @@ public class Ship : MonoBehaviour
 
 	public SpriteRenderer sprite;
 	private Color initialColor;
+	private new AudioManager audio;
 
-	
+
 	void Awake()
 	{
+		audio = FindObjectOfType<AudioManager>();
+		
 		ParticleSystem particleSystem = deathEffect.GetComponent<ParticleSystem>();
 		particleLifetime = particleSystem.main.duration;// finds the particle effect and it's duration
 
@@ -31,7 +34,6 @@ public class Ship : MonoBehaviour
 		}
 
 		initialColor = sprite.color;
-		Debug.Log(sprite.color);
 		initialColor.a = 1;
 		blinkColor.a = 1;
 	}
@@ -63,6 +65,7 @@ public class Ship : MonoBehaviour
 		if (health <= 0)
 		{
 			Die();
+			audio.Play("Death");
 		}
 	}
 

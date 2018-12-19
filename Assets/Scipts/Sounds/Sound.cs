@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Audio;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Sound 
  {
 
-    public string name;
+    public string name;// det här namnet
 
-    public AudioClip clip;
+    public AudioClip clip; //det här är själva ljudklippet
     
     [Range(0,1)]
-    public float volume;
+    public float volume; //det här är volymen 
     [Range(0.1f,3)]
     public float pitch;
 

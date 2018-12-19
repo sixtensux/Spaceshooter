@@ -7,7 +7,6 @@ public class BasicEnemy : Ship
 	public int points = 10;
 	public float speed = 10;
 	public float despawnTime = 5f;
-	public bool StartCheckOver = false;
 
 	private float time;
 	public int Damage = 1;
@@ -20,9 +19,8 @@ public class BasicEnemy : Ship
 		score = gameController.GetComponent<ScoreUpdater>();
 	}
 	
-	protected virtual void FixedUpdate()
+	protected virtual void FixedUpdate()//moves ship
 	{
-		
 		base.rb.transform.Translate(new Vector2((-1 * speed), 0));
 
 		time += Time.deltaTime;
@@ -33,15 +31,15 @@ public class BasicEnemy : Ship
 		}
 	}
 
-
 	//ship "dies" when colliding with the Player damaging the player in the process
 	public virtual void OnTriggerEnter2D(Collider2D hitInfo)
 	{
 		
 		if (hitInfo.tag == "Player")
 		{	
-			PlayerShip Player = hitInfo.GetComponent<PlayerShip>();
+			PlayerShip Player = hitInfo.GetComponent<PlayerShip>(); //damages the player on collision default damage is 1
 
+			
 			//null check
 			if (Player != null)
 			{
